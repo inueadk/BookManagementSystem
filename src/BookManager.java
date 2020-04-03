@@ -36,7 +36,42 @@ public class BookManager {
 		System.out.print("Book ID : ");
 		int bookId = input.nextInt();
 		if(book.id == bookId) {
-			System.out.println("The book ID is edited -> "+ bookId);
+			int num = -1;
+			while(num != 5) {
+				System.out.println("* Book Info Edit Menu *");
+				System.out.println("1. Edit ID");
+				System.out.println("2. Edit Title");
+				System.out.println("3. Edit Writer");
+				System.out.println("4. Edit Publisher");
+				System.out.println("5. Exit");
+				System.out.println("Select one number between 1 - 5  :)");
+				num = input.nextInt();
+				
+				if(num == 1) {
+					System.out.print("Book ID : ");
+					book.id = input.nextInt();
+				}
+				
+				else if(num == 2) {
+					System.out.print("Book Title : ");
+					book.title = input.next();
+				}
+				
+				else if(num == 3) {
+					System.out.print("Writer : ");
+					book.writer = input.next();
+				}
+				
+				else if(num == 4) {
+					System.out.print("Publisher : ");
+					book.publisher = input.next();
+				}
+				
+				else {
+					continue;
+				}
+				
+			}
 		}
 	}
 	
