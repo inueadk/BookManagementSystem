@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import book.Book;
+import book.Novels;
+
 public class BookManager {
 	ArrayList<Book> books = new ArrayList<Book>();
 	Scanner input;
@@ -9,16 +12,34 @@ public class BookManager {
 	}
 	
 	public void addBook() {
-		Book book = new Book();
-		System.out.print("Book ID : ");
-		book.id = input.nextInt();
-		System.out.print("Book Title : ");
-		book.title = input.next();
-		System.out.print("Writer : ");
-		book.writer = input.next();
-		System.out.print("Publisher : ");
-		book.publisher = input.next();
-		books.add(book);
+		int kind = 0;
+		Book book;
+		while(kind != 1 && kind != 2)
+		{
+			System.out.print("1 for Textbook");
+			System.out.print("2 for Novels");
+			System.out.print("Select num for Book Kind 1 or 2 :");
+
+			kind = input.nextInt();
+			if(kind == 1)
+			{
+				book = new Book();
+				book.getUserInput(input);
+				books.add(book);
+				break;
+			}
+			else if(kind == 2)
+			{
+				book = new Novels();
+				book.getUserInput(input);
+				books.add(book);
+				break;
+			}
+			else
+			{
+				System.out.print("Select num for Book Kind 1 or 2 :");
+			}
+		}
 	}
 	
 	public void deleteBook() {
@@ -27,7 +48,7 @@ public class BookManager {
 		int index = -1;
 		for(int i=0; i<books.size();i++)
 		{
-			if(books.get(i).id == bookId) {
+			if(books.get(i).getId() == bookId) {
 				index = i;
 				break;
 			}
@@ -35,7 +56,6 @@ public class BookManager {
 		if(index >= 0)
 		{
 			books.remove(index);
-			Book.numBooksRegistered--;
 			System.out.println("The book "+bookId+"is deleted.");
 		}
 		else
@@ -51,7 +71,7 @@ public class BookManager {
 		for(int i=0; i<books.size();i++)
 		{
 			Book book = books.get(i);
-			if(book.id == bookId) {
+			if(book.getId() == bookId) {
 				int num = -1;
 				while(num != 5) {
 					System.out.println("* Book Info Edit Menu *");
@@ -65,22 +85,26 @@ public class BookManager {
 
 					if(num == 1) {
 						System.out.print("Book ID : ");
-						book.id = input.nextInt();
+						int id = input.nextInt();
+						book.setId(id);
 					}
 
 					else if(num == 2) {
 						System.out.print("Book Title : ");
-						book.title = input.next();
+						String title = input.next();
+						book.setTitle(title);
 					}
 
 					else if(num == 3) {
 						System.out.print("Writer : ");
-						book.writer = input.next();
+						String writer = input.next();
+						book.setWriter(writer);
 					}
 
 					else if(num == 4) {
 						System.out.print("Publisher : ");
-						book.publisher = input.next();
+						String publisher = input.next();
+						book.setPublisher(publisher);
 					}
 
 					else {
@@ -95,7 +119,7 @@ public class BookManager {
 	public void viewBooks() {
 //		System.out.print("Book ID : ");
 //		int bookId = input.nextInt();
-		System.out.println("num of registered books : "+Book.numBooksRegistered);
+		System.out.println("num of registered books : "+books.size());//num대신 swize함수로 바꿈
 		for(int i=0; i<books.size();i++)
 		{
 			books.get(i).printInfo();

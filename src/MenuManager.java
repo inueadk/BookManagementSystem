@@ -12,7 +12,7 @@ public class MenuManager {
 			System.out.println("1. Add Book");
 			System.out.println("2. Delete Book");
 			System.out.println("3. Edit Book");
-			System.out.println("4. View Books");
+			System.out.println("4. View Books");	//book¿Ã books∑Œ πŸ≤Ò
 			System.out.println("5. Exit");
 			System.out.println("Select one number between 1 - 5  :)");
 			num = input.nextInt();
@@ -30,7 +30,7 @@ public class MenuManager {
 			}
 			
 			else if(num == 4) {
-				bookManager.viewBooks();
+				bookManager.viewBooks();	//viewBook¿Ã viewBooks∑Œ πŸ≤Ò
 			}
 			
 			else {
