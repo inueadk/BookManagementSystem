@@ -2,7 +2,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import book.Book;
+import book.BookKind;
 import book.Novels;
+import book.Poems;
+import book.Workbook;
 
 public class BookManager {
 	ArrayList<Book> books = new ArrayList<Book>();
@@ -14,30 +17,46 @@ public class BookManager {
 	public void addBook() {
 		int kind = 0;
 		Book book;
-		while(kind != 1 && kind != 2)
+		while(kind != 1 && kind != 2 && kind != 3)
 		{
-			System.out.print("1 for Textbook");
-			System.out.print("2 for Novels");
-			System.out.print("Select num for Book Kind 1 or 2 :");
+			System.out.println("1 is for Textbook, ");
+			System.out.println("2 is for Workbook, ");
+			System.out.println("3 is for Novels, ");  //2,3¼ø¼­ ¹Ù²ñ
+			System.out.println("4 is for Poems !! ");  //2,3¼ø¼­ ¹Ù²ñ
+			System.out.print("Select num for kind of book 1 - 4 : ");
 
 			kind = input.nextInt();
 			if(kind == 1)
 			{
-				book = new Book();
+				book = new Book(BookKind.Textbook);
 				book.getUserInput(input);
 				books.add(book);
 				break;
 			}
 			else if(kind == 2)
 			{
-				book = new Novels();
+				book = new Workbook(BookKind.Workbook);
+				book.getUserInput(input);
+				books.add(book);
+				break;
+			}
+			else if(kind == 3)
+			{
+				book = new Novels(BookKind.Novels);
+				book.getUserInput(input);
+				books.add(book);
+				break;
+			}
+			else if(kind == 4)
+			{
+				book = new Poems(BookKind.Poems);
 				book.getUserInput(input);
 				books.add(book);
 				break;
 			}
 			else
 			{
-				System.out.print("Select num for Book Kind 1 or 2 :");
+				System.out.print("Select num for Book Kind (1 - 4) :");
 			}
 		}
 	}
