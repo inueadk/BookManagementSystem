@@ -2,7 +2,7 @@ package book;
 
 import java.util.Scanner;
 
-public class Workbook extends Book implements BookInput{
+public class Workbook extends TypeOfBook implements BookInput{
 	
 	public Workbook(BookKind kind){
 		super(kind);
@@ -15,30 +15,16 @@ public class Workbook extends Book implements BookInput{
 	{
 		setBookID(input);
 		setBookTitle(input);
-		System.out.print("Publisher : ");
+		System.out.println("Publisher : ");
 		this.setPublisher("같은 제목을 가진 Textbook의 출판사와 동일합니다.");
 
+		setBookWriterwithYN(input);
+		setOtherBookWriterwithYN(input);
+	}
+	
+	public void setOtherBookWriterwithYN(Scanner input)
+	{
 		char answer = 'x';
-		while(answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N' )
-		{
-			System.out.print("Does it have a writer?(Y/N)");
-			answer = input.next().charAt(0);
-			if(answer == 'y' || answer == 'Y')
-			{
-				setBookWriter(input);
-				break;
-			}
-			else if(answer == 'n' || answer == 'N')
-			{
-				this.setWriter("따로 저자가 없습니다. 같은 제목을 가진 Textbook의 저자와 동일합니다.");
-				break;
-			}
-			else
-			{
-
-			}
-		}
-		answer = 'x';
 		while(answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N' )
 		{
 			System.out.print("Does it have other writer?(Y/N)");

@@ -38,5 +38,29 @@ public abstract class TypeOfBook extends Book {
 			}
 		}
 	}
+	
+	public void setBookWriterwithYN(Scanner input)
+	{
+		char answer = 'x';
+		while(answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N' )
+		{
+			System.out.print("Does it have a writer?(Y/N)");
+			answer = input.next().charAt(0);
+			if(answer == 'y' || answer == 'Y')
+			{
+				setBookWriter(input);
+				break;
+			}
+			else if(answer == 'n' || answer == 'N')
+			{
+				this.setWriter("따로 저자가 없습니다. 같은 제목을 가진 Textbook의 저자와 동일합니다.");
+				break;
+			}
+			else
+			{
+
+			}
+		}
+	}
 
 }

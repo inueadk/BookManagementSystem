@@ -14,6 +14,7 @@ public class Poems extends Book{
 
 		System.out.print("Book Title : ");
 		String title = input.next();
+		System.out.print("Book Title 2: ");
 		String title2 = input.next();
 		this.setTitle(title, title2);
 
