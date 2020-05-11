@@ -2,7 +2,7 @@ package book;
 
 import java.util.Scanner;
 
-public class Book {
+public abstract class Book implements BookInput {	//부모클래스에서 implements했으니 자식 클래스들은 할 필요 없음.
 	protected BookKind kind = BookKind.Textbook;
 
 	protected int id;
@@ -73,7 +73,37 @@ public class Book {
 		this.publisher = publisher;
 	}
 	
-	public void printInfo() {
+	public abstract void printInfo();
+	
+	//BookManager과 child클래스들에 있던 함수	
+	public void setBookID(Scanner input)  //this가지고 전부 처리가능. 따라서ㅠBookInput book은 다 지움
+	{
+		System.out.print("Book ID : ");
+		int id = input.nextInt();
+		this.setId(id);
+	}
+	public void setBookTitle(Scanner input)
+	{
+		System.out.print("Book Title : ");
+		String title = input.next();
+		this.setTitle(title);
+	}
+
+	public void setBookWriter(Scanner input)
+	{
+		System.out.print("Writer : ");
+		String writer = input.next();
+		this.setWriter(writer);
+	}
+	public void setBookPublisher(Scanner input)
+	{
+		System.out.print("Publisher : ");
+		String publisher = input.next();
+		this.setPublisher(publisher);
+	}
+	
+	public String getKindString()	//printInfo안에 있던 것
+	{
 		String skind = "none";
 		switch(this.kind)
 		{
@@ -90,26 +120,7 @@ public class Book {
 			break;
 		default:
 		}
-		System.out.println("Kind : "+ skind + "Id : " + id + "  Title : " + title + "  Writer : " + writer + "  Publisher : " + publisher);
-	}
-	
-	public void getUserInput(Scanner input)
-	{
-		System.out.print("Book ID : ");
-		int id = input.nextInt();
-		this.setId(id);
-		
-		System.out.print("Book Title : ");
-		String title = input.next();
-		this.setTitle(title);
-		
-		System.out.print("Writer : ");
-		String writer = input.next();
-		this.setWriter(writer);
-		
-		System.out.print("Publisher : ");
-		String publisher = input.next();
-		this.setPublisher(publisher);
+		return skind;
 	}
 	
 	

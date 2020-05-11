@@ -2,7 +2,7 @@ package book;
 
 import java.util.Scanner;
 
-public class Workbook extends Book {
+public class Workbook extends Book implements BookInput{
 	
 	public Workbook(BookKind kind){
 		super(kind);
@@ -13,14 +13,8 @@ public class Workbook extends Book {
 	
 	public void getUserInput(Scanner input)
 	{
-		System.out.print("Book ID : ");
-		int id = input.nextInt();
-		this.setId(id);
-
-		System.out.print("Book Title : ");
-		String title = input.next();
-		this.setTitle(title);
-		
+		setBookID(input);
+		setBookTitle(input);
 		System.out.print("Publisher : ");
 		this.setPublisher("같은 제목을 가진 Textbook의 출판사와 동일합니다.");
 
@@ -31,9 +25,7 @@ public class Workbook extends Book {
 			answer = input.next().charAt(0);
 			if(answer == 'y' || answer == 'Y')
 			{
-				System.out.print("Writer : ");
-				String writer = input.next();
-				this.setWriter(writer);
+				setBookWriter(input);
 				break;
 			}
 			else if(answer == 'n' || answer == 'N')
@@ -53,9 +45,8 @@ public class Workbook extends Book {
 			answer = input.next().charAt(0);
 			if(answer == 'y' || answer == 'Y')
 			{
-				System.out.print("Other Writer : ");
-				String writer = input.next();
-				this.setWriter(writer);
+				System.out.print(">> Other Writer <<");
+				setBookWriter(input);
 				break;
 			}
 			else if(answer == 'n' || answer == 'N')
@@ -70,22 +61,7 @@ public class Workbook extends Book {
 		}
 	}
 	public void printInfo() {
-		String skind = "none";
-		switch(this.kind)
-		{
-		case Textbook:
-			skind = "Textbook";
-			break;
-		case Novels:
-			skind = "Novels";
-			break;
-		case Workbook:skind = "Workbook";
-			break;
-		case Poems:
-			skind = "Poems";
-			break;
-		default:
-		}
+		String skind = getKindString();
 		System.out.println("Kind : "+ skind + " Id : " + id + "  Title : " + title + "  Writer : " + writer +" Other Writer : "+writer +" Publisher : " + publisher);
 	}
 
