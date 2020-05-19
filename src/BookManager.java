@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import book.Book;
@@ -16,49 +17,58 @@ public class BookManager {
 		this.input = input;
 	}
 	
-	public void addBook() {
+	public void addBook() {	
 		int kind = 0;
 		BookInput bookInput;
-		while(kind != 1 && kind != 2 && kind != 3)
+		while(kind <1 || kind > 4)
 		{
-			System.out.println("1 is for Textbook, ");
-			System.out.println("2 is for Workbook, ");
-			System.out.println("3 is for Novels, ");  //2,3순서 바뀜
-			System.out.println("4 is for Poems !! ");  //2,3순서 바뀜
-			System.out.print("Select num for kind of book 1 - 4 : ");
+			try {	//예외 처리 추가
+				System.out.println("1 is for Textbook, ");
+				System.out.println("2 is for Workbook, ");
+				System.out.println("3 is for Novels, ");  
+				System.out.println("4 is for Poems !! ");  
+				System.out.print("Select num for kind of book 1 - 4 : ");
 
-			kind = input.nextInt();
-			if(kind == 1)
-			{
-				bookInput = new Textbook(BookKind.Textbook);
-				bookInput.getUserInput(input);
-				books.add(bookInput);
-				break;
+				kind = input.nextInt();
+				if(kind == 1)
+				{
+					bookInput = new Textbook(BookKind.Textbook);
+					bookInput.getUserInput(input);
+					books.add(bookInput);
+					break;
+				}
+				else if(kind == 2)
+				{
+					bookInput = new Workbook(BookKind.Workbook);
+					bookInput.getUserInput(input);
+					books.add(bookInput);
+					break;
+				}
+				else if(kind == 3)
+				{
+					bookInput = new Novels(BookKind.Novels);
+					bookInput.getUserInput(input);
+					books.add(bookInput);
+					break;
+				}
+				else if(kind == 4)
+				{
+					bookInput = new Poems(BookKind.Poems);
+					bookInput.getUserInput(input);
+					books.add(bookInput);
+					break;
+				}
+				else
+				{
+					System.out.print("Select num for Book Kind (1 - 4) :");
+				}
 			}
-			else if(kind == 2)
-			{
-				bookInput = new Workbook(BookKind.Workbook);
-				bookInput.getUserInput(input);
-				books.add(bookInput);
-				break;
-			}
-			else if(kind == 3)
-			{
-				bookInput = new Novels(BookKind.Novels);
-				bookInput.getUserInput(input);
-				books.add(bookInput);
-				break;
-			}
-			else if(kind == 4)
-			{
-				bookInput = new Poems(BookKind.Poems);
-				bookInput.getUserInput(input);
-				books.add(bookInput);
-				break;
-			}
-			else
-			{
-				System.out.print("Select num for Book Kind (1 - 4) :");
+			catch(InputMismatchException e) {	//숫자가 아닌 문자를 입력받은 경우
+				System.out.println("Please put an integer between 1 and 4!");	//에러메세지
+				if(input.hasNext()) {
+					input.next();	
+				}
+				kind = -1;
 			}
 		}
 	}
@@ -105,35 +115,42 @@ public class BookManager {
 			if(book.getId() == bookId) {
 				int num = -1;
 				while(num != 5) {
-					showEditMenu();
-					num = input.nextInt();
-					switch(num)
-					{
-					case 1:
-						book.setBookID(input);
-						break;
-					case 2:
-						book.setBookTitle(input);
-						break;
-					case 3:
-						book.setBookWriter(input);
-						break;
-					case 4:
-						book.setBookPublisher(input);
-						break;
-					default: 
-						continue;
+					try {	//예외 처리 추가
+						showEditMenu();
+						num = input.nextInt();
+						switch(num)
+						{
+						case 1:
+							book.setBookID(input);
+							break;
+						case 2:
+							book.setBookTitle(input);
+							break;
+						case 3:
+							book.setBookWriter(input);
+							break;
+						case 4:
+							book.setBookPublisher(input);
+							break;
+						default: 
+							continue;
+						}
 					}
+					catch(InputMismatchException e) {	//숫자가 아닌 문자를 입력받은 경우
+						System.out.println("Please put an integer between 1 and 5!");	//에러메세지
+						if(input.hasNext()) {
+							input.next();
+						}
+					}
+					num = -1;
 				}//while
 				break;
 			}//if
 		}//for
 	}
-	
+
 	public void viewBooks() {
-//		System.out.print("Book ID : ");
-//		int bookId = input.nextInt();
-		System.out.println("num of registered books : "+books.size());//num대신 swize함수로 바꿈
+		System.out.println("num of registered books : "+books.size());
 		for(int i=0; i<books.size();i++)
 		{
 			books.get(i).printInfo();

@@ -2,7 +2,13 @@ package book;
 
 import java.util.Scanner;
 
-public abstract class Book implements BookInput {	//ºÎ¸ðÅ¬·¡½º¿¡¼­ implementsÇßÀ¸´Ï ÀÚ½Ä Å¬·¡½ºµéÀº ÇÒ ÇÊ¿ä ¾øÀ½.
+import exception.TitleFormatException;
+
+//¿¹¿Ü Ã³¸®¸¦ À§ÇØ Ãß°¡
+
+import exception.WriterFormatException;	
+
+public abstract class Book implements BookInput {
 	protected BookKind kind = BookKind.Textbook;
 
 	protected int id;
@@ -46,24 +52,30 @@ public abstract class Book implements BookInput {	//ºÎ¸ðÅ¬·¡½º¿¡¼­ implementsÇßÀ
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(int id){	
 		this.id = id;
 	}
 	public String getTitle() {
 		return title;
 	}
 	
-	public void setTitle(String title) {
+	public void setTitle(String title)  throws TitleFormatException{
+		if(!title.contains(">") || !title.contains("<")) {	//Á¦¸ñÀÌ >¿Í,<¸¦ Æ÷ÇÔÇÏÁö ¾ÊÀ¸¸é
+			throw new TitleFormatException();	//¿¹¿Ü
+		}
 		this.title = title;
 	}
-	public void setTitle(String title,String title2) {		//¸Þ¼Òµå ¿À¹ö·Îµù
+	public void setTitle(String title,String title2){	
 		this.title = title;
 		this.title2 = title2;
 	}
 	public String getWriter() {
 		return writer;
 	}
-	public void setWriter(String writer) {
+	public void setWriter(String writer) throws WriterFormatException {	//¿¹¿Ü Ã³¸® ÇÏ´Â ºÎºÐ Ãß°¡
+		if(!writer.contains(",") && !writer.equals("None")) {	//ÀÛ°¡ ÀÌ¸§ÀÌ ,¸¦ Æ÷ÇÔÇÏÁö ¾Ê°í, NoneÀÌ ¾Æ´Ñ °æ¿ì
+			throw new WriterFormatException();	//¿¹¿Ü
+		}
 		this.writer = writer;
 	}
 	public String getPublisher() {
@@ -76,7 +88,7 @@ public abstract class Book implements BookInput {	//ºÎ¸ðÅ¬·¡½º¿¡¼­ implementsÇßÀ
 	public abstract void printInfo();
 	
 	//BookManager°ú childÅ¬·¡½ºµé¿¡ ÀÖ´ø ÇÔ¼ö	
-	public void setBookID(Scanner input)  //this°¡Áö°í ÀüºÎ Ã³¸®°¡´É. µû¶ó¼­¤ÐBookInput bookÀº ´Ù Áö¿ò
+	public void setBookID(Scanner input) 
 	{
 		System.out.print("Book ID : ");
 		int id = input.nextInt();
@@ -84,16 +96,30 @@ public abstract class Book implements BookInput {	//ºÎ¸ðÅ¬·¡½º¿¡¼­ implementsÇßÀ
 	}
 	public void setBookTitle(Scanner input)
 	{
-		System.out.print("Book Title : ");
-		String title = input.next();
-		this.setTitle(title);
+		String title = "";
+		while(!title.contains(">") || !title.contains("<")) {
+			System.out.print("Book Title : ");
+			title = input.next();
+			try {
+				this.setTitle(title);
+			} catch (TitleFormatException e) {
+				System.out.println("Incorrect Title Format. Put the title that contains > and <");
+			}
+		}
 	}
 
 	public void setBookWriter(Scanner input)
 	{
-		System.out.print("Writer : ");
-		String writer = input.next();
-		this.setWriter(writer);
+		String writer = "";
+		while(!writer.contains(",")) {
+			System.out.print("Writer : ");
+			writer = input.next();
+			try {
+				this.setWriter(writer);
+			} catch (WriterFormatException e) {
+				System.out.println("Incorrect Writer Format. Put the writer name that contains ,");
+			}
+		}
 	}
 	public void setBookPublisher(Scanner input)
 	{
@@ -102,7 +128,7 @@ public abstract class Book implements BookInput {	//ºÎ¸ðÅ¬·¡½º¿¡¼­ implementsÇßÀ
 		this.setPublisher(publisher);
 	}
 	
-	public String getKindString()	//printInfo¾È¿¡ ÀÖ´ø °Í
+	public String getKindString()
 	{
 		String skind = "none";
 		switch(this.kind)

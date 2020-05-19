@@ -1,6 +1,8 @@
 package book;
 import java.util.Scanner;
 
+import exception.WriterFormatException;	//예외 처리 하기 위해 추가
+
 public abstract class TypeOfBook extends Book {
 	
 	public TypeOfBook(BookKind kind){
@@ -46,19 +48,26 @@ public abstract class TypeOfBook extends Book {
 		{
 			System.out.print("Does it have a writer?(Y/N)");
 			answer = input.next().charAt(0);
-			if(answer == 'y' || answer == 'Y')
-			{
-				setBookWriter(input);
-				break;
-			}
-			else if(answer == 'n' || answer == 'N')
-			{
-				this.setWriter("따로 저자가 없습니다. 같은 제목을 가진 Textbook의 저자와 동일합니다.");
-				break;
-			}
-			else
-			{
+			try {	//예외 처리 부분 추가
+				if(answer == 'y' || answer == 'Y')
+				{
+					System.out.print("Writer : ");
+					String writer = input.next();
+					this.setWriter(writer);
+					break;
+				}
+				else if(answer == 'n' || answer == 'N')
+				{
+					this.setWriter("None");
+					break;
+				}
+				else
+				{
 
+				}
+			}
+			catch(WriterFormatException e) {	//,가 포함되지 않았고 None도 아닌 경우
+				System.out.println("Incorrect Writer Format. Put the writer name that contains ,");
 			}
 		}
 	}

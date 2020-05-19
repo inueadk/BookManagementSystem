@@ -1,17 +1,20 @@
 package book;
 
 import java.util.Scanner;
+//예외 처리를 위해 추가
+import exception.TitleFormatException;	
+import exception.WriterFormatException;
 
 public interface BookInput {
 	public int getId();
 	
 	public void setId(int id);
 	
-	public void setTitle(String title);
+	public void setTitle(String title) throws TitleFormatException;
 	
 	public void setTitle(String title,String title2);
 	
-	public void setWriter(String writer);
+	public void setWriter(String writer) throws WriterFormatException;	//예외 처리 추가
 	
 	public void setPublisher(String publisher);
 	

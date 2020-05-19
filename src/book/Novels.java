@@ -17,26 +17,4 @@ public class Novels extends TypeOfBook{
 		setBookPublisherwithYN(input);
 
 	}
-	
-	/*
-	public String getKindString()	//printInfo안에 있던 것
-	{
-		String skind = "none";
-		switch(this.kind)
-		{
-		case Textbook:
-			skind = "Textbook";
-			break;
-		case Novels:
-			skind = "Novels";
-			break;
-		case Workbook:skind = "Workbook";
-			break;
-		case Poems:
-			skind = "Poems";
-			break;
-		default:
-		}
-		return skind;
-	}*/
 }
