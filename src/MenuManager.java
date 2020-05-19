@@ -13,7 +13,7 @@ public class MenuManager {
 	{
 		int num = -1;
 		while(num != 5) {
-			try {	//예외 처리 추가
+			try {	//예외 체크
 				showMenu(); 
 				num = input.nextInt();
 				switch(num) 

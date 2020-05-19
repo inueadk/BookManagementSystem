@@ -22,7 +22,7 @@ public class BookManager {
 		BookInput bookInput;
 		while(kind <1 || kind > 4)
 		{
-			try {	//예외 처리 추가
+			try {	//예외 체크
 				System.out.println("1 is for Textbook, ");
 				System.out.println("2 is for Workbook, ");
 				System.out.println("3 is for Novels, ");  
