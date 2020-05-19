@@ -87,7 +87,7 @@ public abstract class Book implements BookInput {
 	
 	public abstract void printInfo();
 	
-	//BookManager과 child클래스들에 있던 함수	
+
 	public void setBookID(Scanner input) 
 	{
 		System.out.print("Book ID : ");

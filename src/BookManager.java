@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.InputMismatchException;
+import java.util.InputMismatchException;	//예외
 import java.util.Scanner;
 
 import book.Book;
@@ -92,6 +92,7 @@ public class BookManager {
 		}
 		return index;
 	}
+	
 	public int removefromBooks(int index, int bookId)
 	{
 		if(index >= 0)
@@ -106,6 +107,7 @@ public class BookManager {
 			return -1;
 		}
 	}
+	
 	public void editBook() {
 		System.out.print("Book ID : ");
 		int bookId = input.nextInt();
@@ -136,7 +138,7 @@ public class BookManager {
 							continue;
 						}
 					}
-					catch(InputMismatchException e) {	//숫자가 아닌 문자를 입력받은 경우
+					catch(InputMismatchException e) {	//숫자가 아닌 문자를 입력받은 경우(예외 찾음)
 						System.out.println("Please put an integer between 1 and 5!");	//에러메세지
 						if(input.hasNext()) {
 							input.next();

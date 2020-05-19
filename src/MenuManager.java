@@ -1,4 +1,5 @@
 import java.util.InputMismatchException;  //예외처리
+
 import java.util.Scanner;
 
 public class MenuManager {
@@ -34,7 +35,7 @@ public class MenuManager {
 					continue;
 				}
 			}
-			catch(InputMismatchException e) {	//숫자 말고 문자 입력
+			catch(InputMismatchException e) {	//숫자 말고 문자 입력(에외 찾음)
 				System.out.println("Please put an integer between 1 and 5!");	//에러메세지 출력
 				if(input.hasNext()) {
 					input.next();

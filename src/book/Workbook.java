@@ -31,7 +31,7 @@ public class Workbook extends TypeOfBook implements BookInput{
 		{
 			System.out.print("Does it have other writer?(Y/N)");
 			answer = input.next().charAt(0);
-			try {	//예외 처리 부분 추가
+			try {	//예외 체크
 				if(answer == 'y' || answer == 'Y')
 				{
 					System.out.print(">> Other Writer << ");
@@ -53,10 +53,9 @@ public class Workbook extends TypeOfBook implements BookInput{
 			}
 		}
 	}
+	
 	public void printInfo() {
 		String skind = getKindString();
 		System.out.println("Kind : "+ skind + " Id : " + id + "  Title : " + title + "  Writer : " + writer +" Other Writer : "+writer +" Publisher : " + publisher);
 	}
-
-
 }

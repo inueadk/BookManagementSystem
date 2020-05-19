@@ -3,9 +3,11 @@ package book;
 import java.util.Scanner;
 
 public class Textbook extends Book{
+	
 	public Textbook (BookKind kind){
 		super(kind);
 	}
+	
 	public void getUserInput(Scanner input)
 	{
 		setBookID(input);

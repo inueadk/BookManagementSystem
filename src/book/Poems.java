@@ -19,9 +19,8 @@ public class Poems extends Book{
 		this.setTitle(title, title2);
 
 		setBookWriter(input);
-
 		setBookPublisher(input);
-	}//getUser
+	}
 	
 	public void printInfo() {
 		String skind = getKindString();

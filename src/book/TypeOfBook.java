@@ -70,6 +70,5 @@ public abstract class TypeOfBook extends Book {
 				System.out.println("Incorrect Writer Format. Put the writer name that contains ,");
 			}
 		}
-	}
-
+	}//setBookWriter
 }
