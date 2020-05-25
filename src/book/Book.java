@@ -1,5 +1,6 @@
 package book;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.TitleFormatException;
@@ -8,7 +9,12 @@ import exception.TitleFormatException;
 
 import exception.WriterFormatException;	
 
-public abstract class Book implements BookInput {
+public abstract class Book implements BookInput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3997055671273015004L;
+
 	protected BookKind kind = BookKind.Textbook;
 
 	protected int id;
