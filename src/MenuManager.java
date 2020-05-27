@@ -26,7 +26,7 @@ public class MenuManager {
 		selectMenu(input, bookManager);
 		putObject(bookManager, "bookmanager.ser");
 	}
-	
+	//메뉴선택함수
 	public static void selectMenu(Scanner input, BookManager bookManager)	//메뉴선택함수
 	{
 		int num = -1;
@@ -65,7 +65,7 @@ public class MenuManager {
 			}
 		}
 	}
-	
+	//메인 메뉴를 보여주는 함수
 	public static void showMenu()
 	{
 		System.out.println("** Book Management System Menu **");
@@ -77,7 +77,7 @@ public class MenuManager {
 		System.out.println("Select one number between 1 - 5  :)");
 	}
 	
-	public static BookManager getObject(String filename) {	//직렬화
+	public static BookManager getObject(String filename) {	//직렬화(읽기)
 		BookManager bookManager = null;
 
 		try {
@@ -102,7 +102,7 @@ public class MenuManager {
 		return bookManager;
 	}
 	
-	public static void putObject(BookManager bookManager,String filename) {	//직렬화
+	public static void putObject(BookManager bookManager,String filename) {	//직렬화(쓰기)
 		try {
 			FileOutputStream file = new FileOutputStream(filename);
 			ObjectOutputStream out = new ObjectOutputStream(file);

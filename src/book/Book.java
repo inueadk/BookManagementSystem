@@ -23,7 +23,7 @@ public abstract class Book implements BookInput, Serializable {
 	protected String writer;
 	protected String publisher;
 
-	
+	//생성자
 	public Book(){
 		
 	}
@@ -49,6 +49,7 @@ public abstract class Book implements BookInput, Serializable {
 		this.publisher = publisher;
 	}
 	
+	//getter, setter함수
 	public BookKind getKind() {
 		return kind;
 	}

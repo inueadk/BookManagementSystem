@@ -26,7 +26,7 @@ public class BookManager implements Serializable {
         this.input = input;
     }
 	
-	public void addBook() {	
+	public void addBook() {	//책 추가 함수
 		int kind = 0;
 		BookInput bookInput;
 		while(kind <1 || kind > 4)
@@ -82,7 +82,7 @@ public class BookManager implements Serializable {
 		}
 	}
 	
-	public void deleteBook() {
+	public void deleteBook() {	//책 삭제 함수
 		System.out.print("Book ID : ");
 		int bookId = input.nextInt();
 		int index = findIndex(bookId);
@@ -117,7 +117,7 @@ public class BookManager implements Serializable {
 		}
 	}
 	
-	public void editBook() {
+	public void editBook() {	//책 정보 수정 함수
 		System.out.print("Book ID : ");
 		int bookId = input.nextInt();
 		for(int i=0; i<books.size();i++)
@@ -160,7 +160,7 @@ public class BookManager implements Serializable {
 		}//for
 	}
 
-	public void viewBooks() {
+	public void viewBooks() {	//책 조회 함수
 		System.out.println("num of registered books : "+books.size());
 		for(int i=0; i<books.size();i++)
 		{
@@ -168,7 +168,7 @@ public class BookManager implements Serializable {
 		}
 	}
 	
-	public void showEditMenu()
+	public void showEditMenu()	//책 정보 수정 메뉴를 보여주는 함수
 	{
 		System.out.println("* Book Info Edit Menu *");
 		System.out.println("1. Edit ID");
