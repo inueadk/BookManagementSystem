@@ -7,10 +7,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-public class BookAdder extends JFrame {
-	public BookAdder() {
+public class BookAdder extends JPanel {
+	
+	WindowFrame frame; //클래스마다 이것이 있어야 버튼 눌렀을 때 창 넘어가는 것이 가능
+	
+	public BookAdder(WindowFrame frame) {
+		this.frame = frame;
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
+		
 		//프레임에서 ID 입력 받는 부분
 		JLabel labelID = new JLabel("ID: ", JLabel.TRAILING);
 		JTextField fieldID = new JTextField(10);
@@ -43,9 +49,8 @@ public class BookAdder extends JFrame {
 		SpringUtilities.makeCompactGrid(panel, 5, 2, 6, 6, 6, 6);
 		
 		//프레임(창) 설정
-		this.setSize(300, 300);	//프레임(창) 크기
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//x누르면 프레임(창)끄고 실행 종료
-		this.setContentPane(panel);
+		
+		this.add(panel);
 		this.setVisible(true);	//보이게 하기
 	}
 }

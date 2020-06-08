@@ -7,11 +7,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MenuSelection extends JFrame {
+import listeners.ButtonAddListener;
+import listeners.ButtonViewListener;
+
+public class MenuSelection extends JPanel {
 	
-	public MenuSelection(){
-		this.setSize(300,300);	//프레임 사이즈 설정
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//프레임에서 x누르면 실행 종료
+	WindowFrame frame;
+	
+	public MenuSelection(WindowFrame frame){
+		
+		this.frame = frame;
+		
+		this.setLayout(new BorderLayout());
 		
 		JPanel panel1 = new JPanel();	//패널 생성
 		JPanel panel2 = new JPanel();	//패널 생성
@@ -22,6 +29,10 @@ public class MenuSelection extends JFrame {
 		JButton button3 = new JButton("Edit Book");
 		JButton button4 = new JButton("View Book");
 		JButton button5 = new JButton("Exit Program");
+		
+		button1.addActionListener(new ButtonAddListener(frame));	//버튼1 눌렀을 때 액션 
+		button4.addActionListener(new ButtonViewListener(frame));	//버튼4 눌렀을 때 액션 
+		
 		//패널1에 라벨(레이블) 추가
 		panel1.add(label);
 		//패널2에 버튼 1,2,3,4,5 추가
@@ -33,7 +44,6 @@ public class MenuSelection extends JFrame {
 		
 		this.add(panel1, BorderLayout.NORTH);	//프레임 레이아웃 북쪽에 label추가
 		this.add(panel2, BorderLayout.CENTER);	//패널을 프레임 레이아웃 센터에 붙이기
-		this.setVisible(true);	//프레임 보이게 하기
 	}
 
 }
