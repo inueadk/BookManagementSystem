@@ -1,7 +1,6 @@
 package gui;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -45,11 +44,9 @@ public class BookAdder extends JPanel {
 		panel.add(new JButton("Save"));
 		panel.add(new JButton("Cancel"));
 		
-		
 		SpringUtilities.makeCompactGrid(panel, 5, 2, 6, 6, 6, 6);
 		
 		//프레임(창) 설정
-		
 		this.add(panel);
 		this.setVisible(true);	//보이게 하기
 	}

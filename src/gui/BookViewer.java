@@ -1,6 +1,5 @@
 package gui;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -25,5 +24,4 @@ public class BookViewer extends JPanel {
 		
 		this.add(sp);	//프레임에 생성한 테이블 추가		
 	}
-
 }

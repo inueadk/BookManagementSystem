@@ -21,6 +21,5 @@ public class ButtonAddListener implements ActionListener{
 		BookAdder adder = frame.getBookadder();	
 		frame.setupPanel(adder);	//BookAdder에 있는 것으로 패널을 다시 설정
 	}
-	
 }
 

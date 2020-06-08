@@ -6,5 +6,4 @@ public class GuiTest {	//gui테스트 하는 클래스
 		WindowFrame frame = new WindowFrame();
 
 	}
-
 }

@@ -19,7 +19,7 @@ public class WindowFrame extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//프레임에서 x누르면 실행 종료
 
 		this.setupPanel(menuselection);
-
+		
 		this.setVisible(true);	//프레임 보이게 하기
 	}
 

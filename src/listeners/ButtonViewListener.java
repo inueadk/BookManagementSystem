@@ -20,7 +20,5 @@ public class ButtonViewListener implements ActionListener {
 		JButton b = (JButton)e.getSource();	//버튼 누른 동작
 		BookViewer viewer = frame.getBookviewer();	
 		frame.setupPanel(viewer);	//BookViewer에 있는 것으로 패널을 다시 설정
-
 	}
-
 }
