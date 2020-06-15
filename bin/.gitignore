@@ -1,3 +1,6 @@
 /gui/
 /ButtonViewListener.class
 /listeners/
+/manager/
+/BookManager.class
+/book/

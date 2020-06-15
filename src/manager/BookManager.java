@@ -1,8 +1,11 @@
+package manager;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import book.Book;
 import book.BookInput;
 import book.BookKind;
 import book.Novels;
@@ -166,6 +169,12 @@ public class BookManager implements Serializable {
 		{
 			books.get(i).printInfo();
 		}
+	}
+	public int size() { 	//12주차 추가 -->사이즈 함수 bookViewer에 추가하기 위해 생성
+		return books.size();
+	}
+	public BookInput get(int index) {	//12주차 추가 -->인덱스 리턴함수 bookViewer에서 사용하기 위해 생성
+		return (Book) books.get(index);
 	}
 	
 	public void showEditMenu()	//책 정보 수정 메뉴를 보여주는 함수

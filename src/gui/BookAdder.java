@@ -48,6 +48,6 @@ public class BookAdder extends JPanel {
 		
 		//프레임(창) 설정
 		this.add(panel);
-		this.setVisible(true);	//보이게 하기
+//		this.setVisible(true);	//보이게 하기
 	}
 }

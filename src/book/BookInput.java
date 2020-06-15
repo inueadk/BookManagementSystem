@@ -11,11 +11,17 @@ public interface BookInput {
 	
 	public void setId(int id);
 	
+	public String getTitle(); //12주차 사용 위해 추가
+	
 	public void setTitle(String title) throws TitleFormatException;	//예외 처리 추가
 	
 	public void setTitle(String title,String title2);
 	
+	public String getWriter();	//12주차 사용 위해 추가
+	
 	public void setWriter(String writer) throws WriterFormatException;	//예외 처리 추가
+	
+	public String getPublisher(); //12주차 사용 위해 추가
 	
 	public void setPublisher(String publisher);
 	

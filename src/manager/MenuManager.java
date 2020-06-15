@@ -1,3 +1,4 @@
+package manager;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -6,6 +7,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;  //예외처리
 import java.util.Scanner;
+
+import gui.WindowFrame;
 import log.EventLogger;
 
 public class MenuManager {
@@ -23,6 +26,7 @@ public class MenuManager {
 			bookManager.setScanner(input);
 		}
 		
+		WindowFrame frame = new WindowFrame(bookManager); //12주차 추가 - gui를 연결 
 		selectMenu(input, bookManager);
 		putObject(bookManager, "bookmanager.ser");
 	}
